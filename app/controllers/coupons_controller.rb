@@ -66,4 +66,7 @@ class CouponsController < ApplicationController
     def coupon_params
       params.require(:coupon).permit(:code, :used)
     end
+
+    
+    
 end
