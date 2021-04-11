@@ -1,4 +1,5 @@
-class GumroadApiClient
+class GumroadApi
+
     require 'net/http'
     require 'uri'
     require 'json'
@@ -14,17 +15,27 @@ class GumroadApiClient
     use_ssl: uri.scheme == "https",
     }
 
-        response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
-        http.request(request)
-        end
-     
-        json = JSON.parse(response.body)
-        json["offer_codes"].each do |name|
-          puts  name["name"] + " used " + name["times_used"].to_s + " times"
-        end
+      response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
+      http.request(request)
+      end
+    
+   names_array = []
+   times_used_array = []
 
-    # response.code
-    # response.body
+      json = JSON.parse(response.body)
+      json["offer_codes"].each do |name|
+        if  name["name"].include? "gumroadday"
+          key = name["name"]
+          val = name["times_used"].to_i
+
+          names_array.push(key)
+          times_used_array.push(val)
+          
+        end
+      end
+      puts names_array
+      puts times_used_array
+
 end
 
 

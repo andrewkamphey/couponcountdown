@@ -1,7 +1,8 @@
 <p id="notice"><%= notice %></p>
 <div class="container">
-  <h1 class="">Coupons for Better Letters</h1>
-
+  <h1 class="h1">All Coupons for Better Letters</h1>
+  <p class="p"> as of 4:00 AM April 11th EST </p>
+  <p class="h1"><%= @coupons.last.created_at %></p>
   <table class="table-striped">
     <thead>
       <tr>
@@ -11,11 +12,14 @@
     </thead>
 
     <tbody>
-      <% for c in 1..99 do %>
+      <% @coupons.each do |c| %>
         <tr>
-          <td><%= "gumroadday" + c.to_s %></td>
-          <td><% if  %>
-          <%= link_to "Code Used", "https://gum.co/betterletters/" + "gumroadday" + c.to_s, class: "btn btn-danger"  %>
+          <td><%= c.code %></td>
+          <% if c.times_used.to_i > 0 %>
+          <td><%= link_to "Code Used", "https://gum.co/betterletters/" + c.code, class: "btn btn-danger disabled btn-sm"  %></td>
+          <% else %>
+          <td><%= link_to "Code Available", "https://gum.co/betterletters/" + c.code, class: "btn btn-success btn-sm"  %></td>
+          <% end %>
         
           
 
