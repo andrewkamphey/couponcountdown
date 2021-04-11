@@ -6,7 +6,7 @@ gem 'bootstrap', '~> 4.0'
 gem 'omniauth-gumroad', '~> 1.0', '>= 1.0.1'
 gem 'figaro'
 gem 'faraday'
-gem 'whenever', require: false
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3'
 # Use sqlite3 as the database for Active Record

@@ -19,9 +19,9 @@
 
 # Learn more: http://github.com/javan/whenever
 
-every 5.minutes do
-    rake "db:reset"
-    rake "db:seed"
-    rake "restart"
+set :environment, "development"
+
+every 1.minute do
+    rake "db:reset db:seed db:migrate restart"
     
 end
